@@ -1,0 +1,78 @@
+﻿@model List<GiftManagerWebApp.Models.Gift>
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+}
+
+@*<h2>Index</h2>
+
+@if (Model != null)
+{
+    foreach (GiftManagerWebApp.Models.Gift gift in Model)
+    {
+        <h2>@gift.PayersName</h2>
+    }
+}*@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>All Gifts</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+</head>
+
+<body>
+    <div class="container w-25 p-3">
+        <br>
+        @if (ViewBag.eventName != null)
+        {
+            <h2 class="text-center">@ViewBag.eventName</h2>
+        }
+
+        <h5 class="text-center text-danger"><u>List Of all Gifts</u></h5>
+        @if (Model != null)
+        {
+            <div>
+
+                <table class=" table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th class="text-center">Gift No.</th>
+                            <th class="text-center">Name</th>
+                            <th class="text-center">Address</th>
+                            <th class="text-center">Phone No</th>
+                            <th class="text-center">Gift Type</th>
+                            <th class="text-center">Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach (GiftManagerWebApp.Models.Gift gift in Model)
+                        {
+                            <tr>
+                                <td>@gift.LocalSerialId</td>
+                                <td>@gift.PayersName</td>
+                                <td>@gift.Address</td>
+                                <td>@gift.PhoneNo</td>
+                                <td>@gift.TypeOfGift</td>
+                                <td>@gift.Amount</td>
+                            </tr>
+                        }
+
+                        <tr>
+                            <th colspan="5" class="text-right">Total Money</th>
+
+                            <th>@ViewBag.totalMoney &nbsp;Tk</th>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        }
+        <h5 class="text-center ">Total Number of Gifts : @ViewBag.totalGifts</h5>
+        <h5 class="text-center ">Total Amount of Money : =&nbsp; @ViewBag.totalMoney &nbsp;Tk</h5>
+    </div>
+</body>
+</html>

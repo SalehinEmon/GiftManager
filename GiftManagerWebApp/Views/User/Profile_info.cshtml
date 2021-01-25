@@ -1,0 +1,35 @@
+﻿@model GiftManagerWebApp.Models.User
+@{
+    ViewBag.Title = "Profile_info";
+}
+
+<h2>@Model.Name 's Profile</h2>
+
+<table class="table">
+    <tbody>
+
+        <tr>
+            <th><b>Name : </b></th>
+            <td>@Model.Name</td>
+
+        </tr>
+
+        <tr>
+            <th><b>Email : </b></th>
+            <td>@Model.Email</td>
+
+        </tr>
+
+        <tr>
+            <th><b>Phone Number : </b></th>
+            <td>@Model.PhoneNo</td>
+
+        </tr>
+
+        <tr>
+            <th><b>Address</b></th>
+            <td>@Model.Address</td>
+        </tr>
+
+    </tbody>
+</table>

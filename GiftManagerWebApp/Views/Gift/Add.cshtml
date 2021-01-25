@@ -1,0 +1,102 @@
+﻿@model GiftManagerWebApp.Models.Gift
+
+@{
+    ViewBag.Title = "Add";
+}
+
+<h2>Add New Gift</h2>
+
+@using (Html.BeginForm(null, null, FormMethod.Post))
+{
+
+    <div class="row">
+
+
+        <div class="col-md-4">
+
+            @Html.LabelFor(m => m.TypeOfGift, "Select Gift type:", new { @class = "" })
+            @Html.DropDownListFor(m => m.TypeOfGift,
+                    new List<SelectListItem> {
+                            new SelectListItem { Value="gift",Text="Gift" },
+                            new SelectListItem { Value="money",Text="Money"}
+                        },
+            new { @class = "form-control", onchange = "GiftTypeOnchange()" })
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            @Html.LabelFor(m => m.Amount, "Enter Amount of Money:", new { @class = "" })
+            @Html.TextBoxFor(m => m.Amount, new { @class = "form-control" })
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            @Html.LabelFor(m => m.PayersName, "Enter name of the payers:", new { @class = "" })
+            @Html.TextBoxFor(m => m.PayersName, new { @class = "form-control" })
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            @Html.LabelFor(m => m.Address, "Enter address:", new { @class = "" })
+            @Html.TextAreaFor(m => m.Address, new { @class = "form-control" })
+
+        </div>
+    </div>
+
+
+
+
+    <div class="row">
+        <div class="col-md-4">
+            @Html.LabelFor(m => m.PhoneNo, "Enter phone no :", new { @class = "" })
+            @Html.TextBoxFor(m => m.PhoneNo, new { @class = "form-control" })
+
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-4">
+            @Html.LabelFor(m => m.Email, "Enter email :", new { @class = "" })
+            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+
+        </div>
+    </div>
+
+
+    <br />
+    <input type="submit" value="Add Gift" class="btn btn-success" />
+
+}
+
+@section scripts
+{
+    <script>
+
+        GiftTypeOnchange();
+
+        function GiftTypeOnchange() {
+            var e = document.getElementById("TypeOfGift");
+            var type_of_gift = e.value;
+
+
+
+            if (type_of_gift == "gift") {
+
+                document.getElementById('Amount').disabled = true;
+
+            } else {
+                document.getElementById('Amount').disabled = false;
+            }
+
+
+        }
+
+    </script>
+}

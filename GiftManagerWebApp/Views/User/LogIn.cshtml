@@ -1,0 +1,37 @@
+﻿@{
+    ViewBag.Title = "Log In";
+    ViewBag.noFooter = true;
+}
+
+@if (ViewBag.msg != null)
+{
+    <h3>@ViewBag.msg.Body</h3>
+}
+<h2 class="h1">Log In</h2>
+
+
+
+<div class="container col-md-4 jumbotron">
+    
+
+    @using (Html.BeginForm(null, null, FormMethod.Post))
+    {
+
+        <div>
+            <div class="row">
+                <div class="">
+                    @Html.Label("email", "Enter email address : ")
+                    @Html.TextBox("email", null, new { @class = "form-control", type = "text" })
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="">
+                @Html.Label("password", "Enter email password : ")
+                @Html.TextBox("password", null, new { @class = "form-control", type = "password" })
+            </div>
+        </div>
+
+        <br /><input type="submit" value="Log In" class="btn btn-success btn-block" />
+    }
+</div>

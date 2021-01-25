@@ -1,0 +1,31 @@
+﻿@model GiftManagerWebApp.Models.EventModel
+@{
+    ViewBag.Title = "Add";
+}
+
+<h2>Add new event</h2>
+
+@using (Html.BeginForm(null, null, FormMethod.Post))
+{
+
+    <div class="row">
+        <div class="col-md-4">
+            @Html.LabelFor(m => m.EventName, "Enter Name of the event : ")
+            @Html.TextBoxFor(m => m.EventName, new { @class = "form-control" })
+
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-4">
+            @Html.LabelFor(m => m.WhosEvent, "Whos event : ")
+            @Html.TextBoxFor(m => m.WhosEvent, new { @class = "form-control" })
+
+        </div>
+    </div>
+
+    <br /><input type="submit" value="Add new Event" class="btn btn-success" />
+
+}
+

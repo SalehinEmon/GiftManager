@@ -1,0 +1,72 @@
+﻿@model GiftManagerWebApp.Models.User
+@{
+    ViewBag.Title = "AddUser";
+}
+
+<h2>AddUser</h2>
+
+@using (Html.BeginForm(null, null, FormMethod.Post))
+{
+    <div class="row">
+        <div class="col-md-4">
+            @Html.LabelFor(m => m.Name, "Enter your name : ")
+            @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-4">
+            @Html.LabelFor(m => m.Email, "Enter your email address : ")
+            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            @Html.LabelFor(m => m.Password, "Enter your Password : ")
+            @Html.TextBoxFor(m => m.Password, new { @class = "form-control", type = "password" })
+
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-4">
+            @Html.LabelFor(m => m.Role, "Enter role of the user : ")
+            @Html.DropDownListFor(m => m.Role, new List<SelectListItem> {
+               new SelectListItem{ Value="user",Text="User"},
+               new SelectListItem{ Value="admin",Text="Admin"},
+              },
+            new { @class = "form-control" })
+
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-4">
+            @Html.LabelFor(m => m.PhoneNo, "Enter your email Phone No : ")
+            @Html.TextBoxFor(m => m.PhoneNo, new { @class = "form-control" })
+
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-4">
+            @Html.LabelFor(m => m.Address, "Enter your address : ")
+            @Html.TextBoxFor(m => m.Address, new { @class = "form-control" })
+
+        </div>
+    </div>
+
+
+
+
+    <br />
+    <input type="submit" value="Add new user" class="btn btn-success" />
+}
+

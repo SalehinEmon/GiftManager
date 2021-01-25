@@ -1,0 +1,96 @@
+﻿@{
+    GiftManagerWebApp.Models.User loggedInUser =
+        GiftManagerWebApp.OtherClass.UserSession.GetUserSession();
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gift Manager Application</title>
+    @Styles.Render("~/Content/css")
+</head>
+<body>
+    <br />
+    <div class="container ">
+        @if (loggedInUser != null)
+        {
+            <nav class="navbar navbar-inverse">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="/">Gift Manager</a>
+                    </div>
+
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+                        <ul class="nav navbar-nav">
+
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Gifts<span class="caret"></span></a>
+
+                                <ul class="dropdown-menu" role="menu">
+                                    <li>@Html.ActionLink("All Gifts", "allgifts", "gift")</li>
+                                    <li>@Html.ActionLink("Add Gift", "add", "gift")</li>
+                                    <li></li>
+                                    <li class="divider"></li>
+                                    <li>@Html.ActionLink("Current Gift Status", "current", "gift")</li>
+                                </ul>
+                            </li>
+
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Event<span class="caret"></span></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li>@Html.ActionLink("Set Event", "seteventmodel", "event")</li>
+                                    <li>@Html.ActionLink("Add Event", "add", "event")</li>
+                                </ul>
+                            </li>
+
+                            @if (loggedInUser.Role == "admin")
+                            {
+
+                                <li>@Html.ActionLink("Add New User", "adduser", "user")</li>
+
+                            }
+                        </ul>
+
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">@loggedInUser.Name <span class="caret"></span></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li>@Html.ActionLink(loggedInUser.Name + "s Profile", "profile_info", "user")</li>
+                                    <li>@Html.ActionLink("Change Password", "changepass", "user")</li>
+
+                                    <li class="divider"></li>
+                                    <li>@Html.ActionLink("Log Out", "logout", "user")</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        }
+
+    <div class="container col-md-offset-4">
+
+        @RenderBody()
+    </div>
+        
+    @if (ViewBag.noFooter == null)
+    {<hr />
+            <footer>
+                <p class="text-center">&copy; @DateTime.Now.Year - Golam Salehin</p>
+            </footer>
+    }
+
+
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)
+    </div>
+</body>
+</html>

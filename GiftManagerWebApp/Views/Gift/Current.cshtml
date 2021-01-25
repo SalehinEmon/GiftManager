@@ -1,0 +1,15 @@
+﻿@{
+    ViewBag.Title = "Current";
+}
+
+<h2>Current</h2>
+
+@if (ViewBag.totalAmount != null)
+{
+    <h3>Total gift Money: @ViewBag.totalAmount </h3>
+}
+
+@if (ViewBag.totalGifts != null)
+{
+    <h3>Total Number of gifts : @ViewBag.totalGifts</h3>
+}

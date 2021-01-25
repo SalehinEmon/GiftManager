@@ -1,0 +1,25 @@
+﻿@model GiftManagerWebApp.Models.EventModel
+@{
+    ViewBag.Title = "SetEventModel";
+}
+
+<h2>Set Event</h2>
+
+
+<div class="w-25 p-3">
+    @using (Html.BeginForm(null, null, FormMethod.Post))
+    {
+
+        <div class="row">
+            <div class="col-md-4">
+                @Html.LabelFor(m => m.Id, "Select Event :")
+                @Html.DropDownListFor(m => m.Id, ViewBag.allEvents as List<SelectListItem>, new { @class = "form-control input-sm" })
+            </div>
+
+         </div><br />
+
+
+        <input type="submit" value="Select event" class="btn btn-success" />
+
+    }
+</div>

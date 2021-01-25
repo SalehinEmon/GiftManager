@@ -1,0 +1,39 @@
+﻿@model List<SelectListItem>
+@{
+    ViewBag.Title = "AllGifts";
+}
+
+<h2>AllGifts</h2>
+
+@using (Html.BeginForm(null, null, FormMethod.Post))
+{
+    <div class="row">
+        <div class="col-md-4">
+
+            @Html.Label("eventId", "Select Event model : ")
+            @Html.DropDownList("eventId", Model, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <br /><button onclick="all_gift_page()" class="btn btn-success ">Search</button>
+
+
+
+    @*<br /><input type="submit" class="btn btn-success" value="Search" />*@
+}
+
+<script>
+    function all_gift_page() {
+        //var type_of_gift_dropdown = document.getElementById("type_of_gift");
+        //var type_of_gift = type_of_gift_dropdown.value;
+
+        var event_id_dropdown = document.getElementById("eventId");
+        var event_id = event_id_dropdown.value;
+
+        var url = "/report/index/" + event_id;
+
+        window.open(url, "_blank");
+
+    }
+
+</script>

@@ -1,0 +1,26 @@
+﻿@{
+    ViewBag.Title = ViewBag.msg;
+}
+
+
+<div class="col-md-4">
+    @if (ViewBag.msg != null)
+    {
+        <div class="@ViewBag.Status">
+
+            <div class="panel-heading">
+                <h3 class="panel-title">@ViewBag.msg</h3>
+            </div>
+
+            <div class="panel-body">
+                @if (ViewBag.giftNo != null)
+                {
+                    <h3 class="h3">Gift No : <strong class=""><em> @ViewBag.giftNo </em></strong></h3>
+                }
+            </div>
+
+        </div>
+    }
+
+    @Html.ActionLink("Add Another Gift", "add", "gift", new { @class = "btn btn-primary" })
+    </div>

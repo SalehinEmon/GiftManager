@@ -1,0 +1,30 @@
+﻿@{
+    ViewBag.Title = "ChangePass";
+}
+
+@if (ViewBag.msg != null)
+{
+    <h4>@ViewBag.msg</h4>
+}
+
+<h2> Change Your Password </h2>
+
+@using (Html.BeginForm(null, null, FormMethod.Post))
+{
+
+    <div class="row">
+        <div class="col-md-4">
+            @Html.Label("oldPassword", "Enter old password")
+            @Html.TextBox("oldPassword", null, new { @class = "form-control" ,type="password"})
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            @Html.Label("newPassword", "Enter new password")
+            @Html.TextBox("newPassword", null, new { @class = "form-control", type = "password" })
+        </div>
+    </div>
+
+    <br /><input type="submit" value="Change password" class="btn btn-success" />
+}
